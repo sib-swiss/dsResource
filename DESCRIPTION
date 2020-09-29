@@ -1,0 +1,16 @@
+Package: dsResource
+Type: Package
+Title: Load opal resources in a remote R session
+Version: 0.1.0
+Authors@R:
+    c(person(given = "Iulian",
+             family = "Dragan",
+             role = c("aut", "cre"),
+             email = "iulian.dragan@sib.swiss"))
+Maintainer: Iulian Dragan <iulian.dragan@sib.swiss>
+Description: Functions that facilitate the remote loading of data from an opal resource    
+License: 
+Encoding: UTF-8
+LazyData: true
+Depends: dsSwissKnifeClient
+RoxygenNote: 7.1.1

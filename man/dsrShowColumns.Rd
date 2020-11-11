@@ -4,21 +4,13 @@
 \alias{dsrShowColumns}
 \title{Describe a table}
 \usage{
-dsrShowColumns(
-  db_connection,
-  table_name,
-  schema_name = "public",
-  async = TRUE,
-  datasources = NULL
-)
+dsrShowColumns(table_name, db_connection, async = TRUE, datasources = NULL)
 }
 \arguments{
-\item{db_connection}{a character, the name of the SQL Query. This object has to exist already in the remote
+\item{table_name}{a character, the name of the table (or view) as shown in the output of dsrShowTables(qualified with the schema name if the latter is not 'public', ex: 'information_schema.views')}
+
+\item{db_connection}{a character, the name of the SQLFlexClient object. This object has to exist already in the remote
 session(s) and is created with the function datashield.assign.resource}
-
-\item{table_name}{a character, the name of the table}
-
-\item{schema_name}{a caracter, the name of the schema in which the table resides.}
 
 \item{async}{same as in datashield.assign}
 

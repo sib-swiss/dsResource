@@ -17,7 +17,7 @@ dsrAssign(
 
 \item{table_or_sql}{a character, either the name of a table in the remote database or a valid SQL query}
 
-\item{db_connection}{a character, the name of the SQL Query. This object has to exist already in the remote
+\item{db_connection}{a character, the name of the SQLFlexClient object. This object has to exist already in the remote
 session(s) and is created with the function datashield.assign.resource.}
 
 \item{async}{same as in datashield.assign}

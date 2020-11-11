@@ -7,7 +7,7 @@
 dsrShowTables(db_connection, async = TRUE, datasources = NULL)
 }
 \arguments{
-\item{db_connection}{a character, the name of the SQL Query. This object has to exist already in the remote
+\item{db_connection}{a character, the name of the SQLFlexClent object. This object has to exist already in the remote
 session(s) and is created with the function datashield.assign.resource.}
 
 \item{async}{same as in datashield.assign}

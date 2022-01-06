@@ -4,7 +4,7 @@
 #' @param db_connection a character, the name of the SQLFlexClient object . This object has to exist already in the remote
 #' session(s) and is created with the function datashield.assign.resource
 #' @param async same as in datashield.assign
-#' @param datasources same as in datashi eld.assign
+#' @param datasources same as in datashield.assign
 #' @return a data frame containing the column names and data types
 #' @export
 dsrEstimateObjectSize <- function (virtual_objects, db_connection, async = TRUE, datasources = NULL){

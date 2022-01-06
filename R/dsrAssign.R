@@ -1,21 +1,20 @@
 #' @title Load data in the remote session(s) 
 #' @description Assign data to a data frame from a resource of the type SQL Query
 #' @param symbol a character, the name of the data frame
-#' @param table_or_sql a character, either the name of a table in the remote database or a valid SQL query
+#' @param table a character, the name of a table in the remote database
+#' @param collist a vector , names of the columns to load. If NULL (the default) all the columns will be loaded.
+#' @param where_clause a character, an optional where clause to the sql statement that will load the table. It must not begin with "where".
 #' @param db_connection a character, the name of the SQLFlexClient object. This object has to exist already in the remote
 #' session(s) and is created with the function datashield.assign.resource. 
 #' @param async same as in datashield.assign
 #' @param datasources same as in datashield.assign
 #' @export
-dsrAssign <- function (symbol, table_or_sql, db_connection, async = TRUE, datasources = NULL){
+dsrAssign <- function (symbol, table, collist = NULL, where_clause = NULL, db_connection, async = TRUE, datasources = NULL){
   if (is.null(datasources)) {
     datasources <- datashield.connections_find()
   }
-  # make it agnostic to table name or sql:
- if(!grepl('^\\s*select', table_or_sql , ignore.case = TRUE)){ # it's a table
-   table_or_sql <-  paste0('select * from ', table_or_sql) 
- }  
- sqltext <- dsSwissKnifeClient:::.encode.arg(table_or_sql)
- myexpr <- paste0('loadQuery(', db_connection, ',"', sqltext, '")')
- datashield.assign.expr(datasources, symbol , as.symbol(myexpr))
- }
+ 
+ myexpr <- list(as.symbol('loadQuery'), table, dsSwissKnifeClient:::.encode.arg(collist), dsSwissKnifeClient:::.encode.arg(where_clause))
+ 
+ datashield.assign.expr(datasources, symbol , as.call(myexpr), async = async)
+}

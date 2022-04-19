@@ -14,7 +14,7 @@ dsrAssign <- function (symbol, table, collist = NULL, where_clause = NULL, db_co
     datasources <- datashield.connections_find()
   }
  
- myexpr <- list(as.symbol('loadQuery'), table, dsSwissKnifeClient:::.encode.arg(collist), dsSwissKnifeClient:::.encode.arg(where_clause))
+ myexpr <- list(as.symbol('loadQuery'), as.symbol(db_connection), table, dsSwissKnifeClient:::.encode.arg(collist), dsSwissKnifeClient:::.encode.arg(where_clause))
  
  datashield.assign.expr(datasources, symbol , as.call(myexpr), async = async)
 }

@@ -14,7 +14,7 @@ dsrAssign <- function (symbol, table, collist = NULL, where_clause = NULL, db_co
     datasources <- datashield.connections_find()
   }
  
- if(is.null(colllist)){
+ if(is.null(collist)){
    collist = '*'
  }  
 if(is.null(where_clause)){

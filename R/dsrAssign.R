@@ -9,7 +9,7 @@
 #' @param async same as in datashield.assign
 #' @param datasources same as in datashield.assign
 #' @export
-dsrAssign <- function (symbol, table, collist = NULL, where_clause = NULL, db_connection, async = TRUE, datasources = NULL){
+dsrAssign <- function (symbol, table, db_connection, collist = NULL, where_clause = NULL, row_limit = NULL, async = TRUE, datasources = NULL){
   if (is.null(datasources)) {
     datasources <- datashield.connections_find()
   }
@@ -20,7 +20,7 @@ dsrAssign <- function (symbol, table, collist = NULL, where_clause = NULL, db_co
 if(is.null(where_clause)){
   where_clause = '1=1'
 }
- myexpr <- list(as.symbol('loadQuery'), as.symbol(db_connection), table, dsSwissKnifeClient:::.encode.arg(collist), dsSwissKnifeClient:::.encode.arg(where_clause))
+ myexpr <- list(as.symbol('loadQuery'), as.symbol(db_connection), table, dsSwissKnifeClient:::.encode.arg(collist), dsSwissKnifeClient:::.encode.arg(where_clause), row_limit)
  
  datashield.assign.expr(datasources, symbol , as.call(myexpr), async = async)
 }

@@ -20,7 +20,7 @@ dsrAssign <- function (symbol, table, db_connection, collist = NULL, where_claus
 if(is.null(where_clause)){
   where_clause = '1=1'
 }
- myexpr <- list(as.symbol('loadQuery'), as.symbol(db_connection), table, dsSwissKnifeClient:::.encode.arg(collist), dsSwissKnifeClient:::.encode.arg(where_clause), row_limit)
+ myexpr <- list(as.symbol('loadQuery'),x = as.symbol(db_connection), table_name = table, cols = dsSwissKnifeClient:::.encode.arg(collist), where_clause = dsSwissKnifeClient:::.encode.arg(where_clause), limit = row_limit)
  
  datashield.assign.expr(datasources, symbol , as.call(myexpr), async = async)
 }

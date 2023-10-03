@@ -6,8 +6,11 @@
 \usage{
 dsrAssign(
   symbol,
-  table_or_sql,
+  table,
   db_connection,
+  collist = NULL,
+  where_clause = NULL,
+  row_limit = NULL,
   async = TRUE,
   datasources = NULL
 )
@@ -15,10 +18,14 @@ dsrAssign(
 \arguments{
 \item{symbol}{a character, the name of the data frame}
 
-\item{table_or_sql}{a character, either the name of a table in the remote database or a valid SQL query}
+\item{table}{a character, the name of a table in the remote database}
 
 \item{db_connection}{a character, the name of the SQLFlexClient object. This object has to exist already in the remote
 session(s) and is created with the function datashield.assign.resource.}
+
+\item{collist}{a vector , names of the columns to load. If NULL (the default) all the columns will be loaded.}
+
+\item{where_clause}{a character, an optional where clause to the sql statement that will load the table. It must not begin with "where".}
 
 \item{async}{same as in datashield.assign}
 

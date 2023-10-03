@@ -2,5 +2,6 @@
 
 export(dsrAssign)
 export(dsrEstimateObjectSize)
+export(dsrSetDbParam)
 export(dsrShowColumns)
 export(dsrShowTables)

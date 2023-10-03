@@ -19,7 +19,7 @@ session(s) and is created with the function datashield.assign.resource}
 
 \item{async}{same as in datashield.assign}
 
-\item{datasources}{same as in datashi eld.assign}
+\item{datasources}{same as in datashield.assign}
 }
 \value{
 a data frame containing the column names and data types
